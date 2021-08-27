@@ -3,10 +3,12 @@
 import PackageDescription
 
 let baseName = "Charts"
-let target = "\(baseName)_\(4_0_1)"
+let packageName = "\(baseName)Package"
+let libraryName = "\(baseName)Library"
+let targetName = "\(baseName)_\(4_0_1)"
 
 let package = Package(
-    name: "Charts",
+    name: packageName,
     platforms: [
           .iOS(.v9),
           .tvOS(.v9),
@@ -14,19 +16,15 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Charts",
-            targets: [target]),
-        .library(
-            name: "ChartsDynamic",
-            type: .dynamic,
-            targets: [target])
+            name: libraryName,
+            targets: [targetName])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms", from: "0.0.1")
     ],
     targets: [
         .target(
-            name: target,
+            name: targetName,
             dependencies: [.product(name: "Algorithms", package: "swift-algorithms")],
             path: "Source/\(baseName)"
         )

@@ -5,7 +5,8 @@ import PackageDescription
 let baseName = "Charts"
 let packageName = "\(baseName)Package"
 let libraryName = "\(baseName)Library"
-let targetName = "\(baseName)_\(4_0_1)"
+// underscore followed by leading 0 breaks parsing
+let targetName = "\(baseName)_\(401)"
 
 let package = Package(
     name: packageName,
@@ -26,7 +27,7 @@ let package = Package(
         .target(
             name: targetName,
             dependencies: [.product(name: "Algorithms", package: "swift-algorithms")],
-            path: "Source/\(baseName)"
+            path: "Source/\(targetName)"
         )
     ],
     swiftLanguageVersions: [.v5]
